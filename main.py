@@ -79,3 +79,24 @@ def takecommand():
 query = takecommand()
 while(query == "None"):
     query = takecommand()
+
+
+def destination_language():
+    print("Enter the language in which you want to translate(Eg: hindi, bengali, gujrati, etc): ")
+    print()
+
+    to_lang = takecommand()
+    while(to_lang == "None"):
+        to_lang = takecommand()
+    to_lang = to_lang.lower()
+    return to_lang
+
+to_lang = destination_language()
+
+while(to_lang not in dic):
+    print("Language in which you are trying to translate  is currently not available, please input some other language: ")
+    print()
+    to_lang = destination_lang()
+
+to_lang = dic[dic.index(to_lang)+1]
+
