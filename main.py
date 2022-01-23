@@ -105,3 +105,10 @@ translator = Translator()
 text_to_translate = translator.translate(query, dest=to_lang)
 text = text_to_translate.text
 
+speak = sTTS(text=text, lang=to_lang, slow=False)
+
+speak.save("captured_voice.mp3")
+
+playsound('captured_voice.mp3')
+os.remove('captured_voice.mp3')
+print(text)
