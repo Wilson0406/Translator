@@ -1,4 +1,4 @@
-from playsoung import playsound
+from playsound import playsound
 import speech_recognition as sr
 from googletrans import Translator
 from gtts import gTTS
@@ -62,7 +62,7 @@ dic = ('afrikaans', 'af',
 
 def takecommand():
     r = sr.Recognizer()
-    with sr.Microphone as source:
+    with sr.Microphone() as source:
         print("Listening...")
         r.pause_threshold = 1
         audio = r.listen(source)
@@ -72,8 +72,8 @@ def takecommand():
         query = r.recognize_google(audio, language='en-in')
         print(f"user said {query}\n")
     except Exception as e:
-        print("Say thah again please...)
-              return "None"
+        print("Say that again please...")
+        return "None"
     return query
 
 query = takecommand()
@@ -105,7 +105,7 @@ translator = Translator()
 text_to_translate = translator.translate(query, dest=to_lang)
 text = text_to_translate.text
 
-speak = sTTS(text=text, lang=to_lang, slow=False)
+speak = gTTS(text=text, lang=to_lang, slow=False)
 
 speak.save("captured_voice.mp3")
 
