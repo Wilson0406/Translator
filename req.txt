@@ -1,0 +1,5 @@
+playsound
+googletrans
+SpeechRecognition
+gTTs
+gTTS-token
