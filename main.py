@@ -100,3 +100,8 @@ while(to_lang not in dic):
 
 to_lang = dic[dic.index(to_lang)+1]
 
+translator = Translator()
+
+text_to_translate = translator.translate(query, dest=to_lang)
+text = text_to_translate.text
+
