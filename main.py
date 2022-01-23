@@ -4,7 +4,7 @@ from googletrans import Translator
 from gtts import gTTS
 import os
 
-dic = ('afrikaans', 'af', 'albanian', 'sq',
+dic = ('afrikaans', 'af',
        'amharic', 'am', 'arabic', 'ar',
        'azerbaijani', 'az', 'belarusian', 'be',
        'bulgarian', 'bg', 'bengali', 'bn',
@@ -54,11 +54,28 @@ dic = ('afrikaans', 'af', 'albanian', 'sq',
        'thai', 'th', 'filipino', 'tl',
        'turkish', 'tr', 'uyghur', 'ug',
        'ukrainian', 'uk', 'urdu', 'ur',
-       'uxbek', 'uz', 'vietnamese', 'vi',
+       'uzbek', 'uz', 'vietnamese', 'vi',
        'xhosa', 'xh', 'yiddish', 'yi',
        'yoruba', 'yo', 'chinese (simplified)', 'zh-cn',
        'chinese (traditional)', 'ch-tw', 'zulu', 'zu')
 
 
+def takecommand():
+    r = sr.Recognizer()
+    with sr.Microphone as source:
+        print("Listening...")
+        r.pause_threshold = 1
+        audio = r.listen(source)
 
+    try:
+        print("Recognizing...")
+        query = r.recognize_google(audio, language='en-in')
+        print(f"user said {query}\n")
+    except Exception as e:
+        print("Say thah again please...)
+              return "None"
+    return query
 
+query = takecommand()
+while(query == "None"):
+    query = takecommand()
