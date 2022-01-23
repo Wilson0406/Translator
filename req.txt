@@ -3,3 +3,4 @@ googletrans
 SpeechRecognition
 gTTs
 gTTS-token
+pyAudio
